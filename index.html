@@ -25,8 +25,8 @@ My Zombie game
 <script>
 var Zombie_map;
 var old_position;
-var tolerance = 10;
-var score = 10;
+var tolerance = 600;
+var score = 100;
 
 var data = `-33.32744683000285 115.63315096134818 weapons.png 
 -33.327298182410324 115.63408536603174 hospital.png 
@@ -69,12 +69,15 @@ navigator.geolocation.watchPosition(set_my_position);
 else{ 
 alert ("geolocation does't work in your browser");
 }
-
+old_position = new google.maps.Marker ({
+position: {lat: -33.327617, lng: 115.633066},
+map: Zombie_map
+});
 
 
 
 function set_my_position(position) {
-  old_position.setMap(null);
+old_position.setMap(null);
 var pos = new google.maps.LatLng (position.coords.latitude, position.coords.longitude);
 console.log(pos);
 
